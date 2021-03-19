@@ -1,0 +1,38 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "images",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputDocument",
+      "databaseName": "andersmn",
+      "collectionName": "demo",
+      "createIfNotExists": "true",
+      "connectionStringSetting": "andersmn_DOCUMENTDB",
+      "partitionKey": "/id"
+    },
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "andersmn_SERVICEBUS",
+      "name": "outputSbMsg",
+      "queueName": "imagequeue",
+      "topicName": "outtopic"
+    }
+  ],
+  "scriptFile": "../dist/UploadImage/index.js"
+}

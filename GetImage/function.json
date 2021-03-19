@@ -1,0 +1,30 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "images/{id}",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputDocument",
+      "databaseName": "andersmn",
+      "collectionName": "demo",
+      "connectionStringSetting": "andersmn_DOCUMENTDB",
+      "id": "{id}",
+      "partitionKey": "{id}"
+    }
+  ],
+  "scriptFile": "../dist/GetImage/index.js"
+}

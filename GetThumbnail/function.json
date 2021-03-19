@@ -1,0 +1,29 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "thumbnails",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputDocument",
+      "databaseName": "andersmn",
+      "collectionName": "demo",
+      "connectionStringSetting": "andersmn_DOCUMENTDB",
+      "partitionKey": "/id"
+    }
+  ],
+  "scriptFile": "../dist/GetThumbnail/index.js"
+}

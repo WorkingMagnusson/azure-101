@@ -1,0 +1,41 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "images/{id}/comments",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputDocument",
+      "databaseName": "andersmn",
+      "collectionName": "demo",
+      "connectionStringSetting": "andersmn_DOCUMENTDB",
+      "id": "{id}",
+      "partitionKey": "{id}"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputDocument",
+      "databaseName": "andersmn",
+      "collectionName": "demo",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "andersmn_DOCUMENTDB",
+      "id": "{id}",
+      "partitionKey": "{id}"
+    }
+  ],
+  "scriptFile": "../dist/PostComments/index.js"
+}

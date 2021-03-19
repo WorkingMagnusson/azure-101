@@ -1,0 +1,32 @@
+{
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "imagequeue",
+      "connection": "andersmn_SERVICEBUS"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputDocument",
+      "databaseName": "andersmn",
+      "collectionName": "demo",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "andersmn_DOCUMENTDB",
+      "partitionKey": "/id"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputDocument",
+      "databaseName": "andersmn",
+      "collectionName": "demo",
+      "connectionStringSetting": "andersmn_DOCUMENTDB",
+      "id": "{id}",
+      "partitionKey": "{id}"
+    }
+  ],
+  "scriptFile": "../dist/ImageQueueTrigger/index.js"
+}
