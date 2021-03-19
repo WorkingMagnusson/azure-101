@@ -19,5 +19,9 @@
 
         "editor.formatOnSave": true
 
+    },
+    "yaml.validate": true,
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow": ["/.github/workflows/*"]
     }
 }
